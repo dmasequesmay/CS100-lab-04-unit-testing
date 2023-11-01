@@ -20,7 +20,7 @@ TEST(TriangleTest, testArea) {
 }
 
 TEST(TriangleTest, testInvalidInput) {
-    EXPECT_DEATH (Triangle(1,6,6), "ERROR: 1st side not the longest");
+    EXPECT_DEATH (Triangle(1,3,4), "ERROR: 1st side not the longest");
 }
 // =====================================================
 TEST(TriangleTests, testKindScalene) {
