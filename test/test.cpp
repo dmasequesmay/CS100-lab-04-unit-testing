@@ -18,3 +18,4 @@ TEST(HailstoneTests, number2) {
 TEST(HailstoneTests, number3) {
     EXPECT_EQ (sequence::satisfiesHailstone(3), true);
 }
+
