@@ -16,3 +16,4 @@ test/CMakeFiles/
 test/Makefile
 test/cmake_install.cmake
 test/googletest/googletest/generated/
+test/googletest/googletest/generated/
