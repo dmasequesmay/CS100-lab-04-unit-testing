@@ -2,6 +2,7 @@ bin/runAllTests
 CMakeCache.txt
 CMakeFiles/
 Makefile
+bin/
 cmake_install.cmake
 lib/CMakeFiles/
 lib/Makefile

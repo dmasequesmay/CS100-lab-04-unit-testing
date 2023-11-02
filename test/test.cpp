@@ -16,5 +16,3 @@ TEST(HailstoneTests, testEvenInput) {
 
 TEST(HailstoneTests, testOddInput) {
     EXPECT_EQ (satisfiesHailstone(5), true);
-}
-
