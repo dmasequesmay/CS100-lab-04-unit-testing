@@ -1,52 +1,49 @@
 #include "gtest/gtest.h"
 #include <gmock/gmock.h>
-#include "../include/Awards.h"
 #include <vector>
-#include <string>
-using::testing::InSequence;
-using::testing::AtLeast;
+#include "../include/Awards.h"
+
+
 using awards::RankList;
 using awards::AwardCeremonyActions;
 
-class MockList : public RankList {
+class MockRankList : public RankList {
     private:
-        int index = 0;
-        std::vector<std::string> names; 
-    public:
-        std::string getNext() {
-            return names.at(index++);
-        }
-        MockList() : names{"Alex", "Bill", "Carly"}, index(0) {}
+    std::vector<std::string> names;
+    int index;
+
+    public: 
+    std::string getNext() {
+        return names.at(index++);
+    }
+    MockRankList() : names{"Adam", "Bob", "Charlie"}, index(0) {}
 };
 
-
-
-class MockCeremony : public AwardCeremonyActions {
-    public:
-        MOCK_METHOD(void, playAnthem, (), (override));
-        MOCK_METHOD(void, awardBronze, (std::string recipients), (override));
-        MOCK_METHOD(void, awardSilver, (std::string recipients), (override));
-        MOCK_METHOD(void, awardGold, (std::string recipients),(override));
-        MOCK_METHOD(void, turnOffTheLightsAndGoHome, (), (override));
+class MockAwardCeremonyActions : public AwardCeremonyActions {
+    public: 
+    MOCK_METHOD(void, playAnthem, (), (override));
+    MOCK_METHOD(void, turnOffTheLightsAndGoHome, (), (override));
+    MOCK_METHOD(void, awardBronze, (std::string recipient), (override));
+    MOCK_METHOD(void, awardSilver, (std::string recipient), (override));
+    MOCK_METHOD(void, awardGold, (std::string recipient), (override));
 };
 
-TEST(AwardsTest, CeremonyInSequence) {
-    MockList recipients;
-    MockCeremony actions;
+using::testing::InSequence;
 
-    InSequence  seq;
+TEST(AwardsTest, FunctionsRunInOrder) {
+
+    MockRankList recipients;
+    MockAwardCeremonyActions actions;
+
+    InSequence seq;
     {
     EXPECT_CALL(actions, playAnthem());
-    EXPECT_CALL(actions, awardBronze("Alex"));
-    EXPECT_CALL(actions, awardSilver("Bill"));
-    EXPECT_CALL(actions, awardGold("Carly"));
+    EXPECT_CALL(actions, awardBronze("Adam"));
+    EXPECT_CALL(actions, awardSilver("Bob"));
+    EXPECT_CALL(actions, awardGold("Charlie"));
     EXPECT_CALL(actions, turnOffTheLightsAndGoHome());
     }
-    performAwardCeremony(recipients,actions);
-}
 
+    performAwardCeremony(recipients, actions);
 
-
-
-
-
+};
