@@ -21,7 +21,7 @@ TEST(TriangleTests, testKind) {
     EXPECT_EQ (aTriangle->getKind(), Triangle::Kind::EQUILATERAL);
 }
 
-TEST(TriangleTest, testArea) {
+TEST(TriangleTests, testArea) {
 
     Triangle *aTriangle = new Triangle(3,3,1);
     EXPECT_EQ (aTriangle->getArea(), sqrt(2.1875));
@@ -44,13 +44,12 @@ TEST(TriangleTests, expectDeath) {
     EXPECT_DEATH (Triangle(1,3,4), "First side is not the longest");
 }
 
-TEST(TriangleTest, testPerimeter2) {
+TEST(TriangleTests, testPerimeter3) {
     Triangle *aTriangle = new Triangle(5,5,3);
     EXPECT_EQ(aTriangle->getPerimeter(), 13);
 }
-// =====================================================
 
-TEST(TriangleTest, testInvalidInput) {
+TEST(TriangleTests, testInvalidInput) {
     EXPECT_DEATH (Triangle(1,3,4), "First side is not the longest");
 }
 
@@ -66,7 +65,7 @@ TEST(TriangleTests, testPerimeterEquilateral) {
 }
 
 
-TEST(TriangleTests, testArea) {
+TEST(TriangleTests, testArea2) {
     Triangle *aTriangle = new Triangle(6,5,5);
     EXPECT_EQ (aTriangle->getArea(), 12);
 }
@@ -76,7 +75,7 @@ TEST(TriangleTests, testKindIsosceles) {
     ASSERT_EQ (aTriangle->getKind(), Triangle::Kind::ISOSCELES);
 }
 
-TEST(TriangleTests, testKindScalene) {
+TEST(TriangleTests, testKindScalene2) {
     Triangle *aTriangle = new Triangle(5,4,3);
     EXPECT_EQ (aTriangle->getKind(), Triangle::Kind::SCALENE);
 }
@@ -86,12 +85,12 @@ TEST(TriangleTests, expectNotThrow) {
     EXPECT_NO_THROW (aTriangle->getPerimeter());
 }
 
-TEST(TriangleTests, testKindIsosceles) {
+TEST(TriangleTests, testKindIsosceles2) {
     Triangle *aTriangle = new Triangle(3,2,2);
     EXPECT_EQ (aTriangle->getKind(), Triangle::Kind::ISOSCELES);
 }
 
-TEST(TriangleTest, testValidInput) {
+TEST(TriangleTests, testValidInput2) {
     EXPECT_NO_THROW (Triangle(5,5,5));
 }
 
