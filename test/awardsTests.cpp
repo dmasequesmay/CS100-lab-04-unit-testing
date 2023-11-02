@@ -47,4 +47,3 @@ TEST(AwardsTest, FunctionsRunInOrder) {
     performAwardCeremony(recipients, actions);
 
 };
-
