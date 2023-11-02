@@ -3,12 +3,9 @@
 #include <cmath>
 using shapes::Triangle;
 
+<<<<<<< HEAD
 // ================= Failing Tests =====================
-TEST(TriangleTests, testPerimeter) {
-    Triangle *aTriangle = new Triangle(4,4,2);
-    EXPECT_EQ (aTriangle->getPerimeter(),10);
-}
-
+<<<<<<< HEAD
 TEST(TriangleTests, testKind) {
     Triangle *aTriangle = new Triangle(4,4,4);
     EXPECT_EQ (aTriangle->getKind(), Triangle::Kind::EQUILATERAL);
@@ -43,3 +40,5 @@ TEST(TriangleTest, testValidInput) {
 }
 
 
+=======
+>>>>>>> main
