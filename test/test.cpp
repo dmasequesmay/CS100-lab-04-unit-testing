@@ -1,20 +1,28 @@
 #include "gtest/gtest.h"
-#include "../include/Hailstone.h"
-using sequence::satisfiesHailstone;
+#include <gmock/gmock.h>
+#include "../include/Awards.h"
+#include <vector>
+#include <string>
+using::testing::InSequence;
+using awards::RankList;
+using awards::AwardCeremonyActions;
 
-TEST(HailstoneTests, testZeroInput) {
-    EXPECT_EQ (satisfiesHailstone(0),false);
+class MockList : public RankList {
+    private:
+        std::string getNext();
+        int index = 0;
+        vector<std::string> names = {"Alex", "Bill", "Carly"}; 
 }
 
-TEST(HailstoneTests, testOneInput) {
-    EXPECT_EQ (satisfiesHailstone(1), true);
+class MockCeremony : public AwardCeremonyActions {
+    MOCK_METHOD(void, playAnthem, (), (override));
+    MOCK_METHOD(void, awardBronze, (recipients.getNext()), (override));
+    MOCK_METHOD(void, awardSilver, (recipients.getNext()), (override));
+    MOCK_METHOD(void, awardGold, (recipients.getNext()),(override));
+    MOCK_METHOD(void, turnOffTheLightsAndGoHome, (), (override));
 }
 
-TEST(HailstoneTests, testEvenInput) {
-    EXPECT_EQ (satisfiesHailstone(4), true);
-}
 
-TEST(HailstoneTests, testOddInput) {
-    EXPECT_EQ (satisfiesHailstone(5), true);
-}
+
+
 
