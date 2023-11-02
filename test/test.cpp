@@ -13,9 +13,13 @@ class MockList : public RankList {
         int index = 0;
         std::vector<std::string> names; 
     public:
-        MOCK_METHOD(std::string, getNext, (), (override));
+        std::string getNext() {
+            return names.at(index++);
+        }
         MockList() : names{"Alex", "Bill", "Carly"}, index(0) {}
 };
+
+
 
 class MockCeremony : public AwardCeremonyActions {
     public:
@@ -31,12 +35,14 @@ TEST(AwardsTest, CeremonyInSequence) {
     MockCeremony actions;
 
     InSequence  seq;
-
+    {
     EXPECT_CALL(actions, playAnthem());
     EXPECT_CALL(actions, awardBronze("Alex"));
     EXPECT_CALL(actions, awardSilver("Bill"));
     EXPECT_CALL(actions, awardGold("Carly"));
     EXPECT_CALL(actions, turnOffTheLightsAndGoHome());
+    }
+    performAwardCeremony(recipients,actions);
 }
 
 
