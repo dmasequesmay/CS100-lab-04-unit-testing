@@ -5,7 +5,7 @@ add_subdirectory(googletest)
 
 add_executable(runAllTests
   triangleTest.cpp
-  hailstoneTest.cpp
+  hailstoneTests.cpp
   awardsTest.cpp 
   )
 
